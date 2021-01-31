@@ -1,0 +1,34 @@
+﻿@model List<MVC_Northwind2.Models.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<div class="col-md-12">
+    @Html.ActionLink("New Product", "AddProduct", null, new { @class = "btn btn-success" })
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Product Name</th>
+            <th>Unitprice</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.ProductID</td>
+                <td>@product.ProductName</td>
+                <td>@product.UnitPrice</td>
+                <td>
+                    @Html.ActionLink("Remove", "RemoveProduct", new { productId = product.ProductID }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Update", "UpdateProduct", new { productId = product.ProductID }, new { @class = "btn btn-warning" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

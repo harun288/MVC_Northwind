@@ -1,0 +1,34 @@
+﻿@model List<MVC_Northwind2.Models.Order>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<div class="col-md-12">
+    @Html.ActionLink("New Order", "AddOrder", null, new { @class = "btn btn-success" })
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Ship Name</th>
+            <th>Ship Address</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.OrderID</td>
+                <td>@order.ShipName</td>
+                <td>@order.ShipAddress</td>
+                <td>
+                    @Html.ActionLink("Remove", "RemoveOrder", new { orderId = order.OrderID }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Update", "UpdateOrder",new { orderId = order.OrderID }, new { @class = "btn btn-warning" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
